@@ -9,7 +9,8 @@ export class CrewComponent implements OnInit {
 
   inCrew: boolean = false;
   crew: object[] = [];
-
+  showImage: boolean = false;
+  imgSource: string = "";
   candidates: object[] = [
     {name: "Sally Ride", photo: 'https://handlers.education.launchcode.org/static/images/sally-ride.jpg'},
     {name: "Mae Jemison", photo: 'https://handlers.education.launchcode.org/static/images/mae-jemison.jpg'},
@@ -23,7 +24,24 @@ export class CrewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
-
+  crewFull : string = "";
   // Code the 'addCrewMember' function here:
+  addCrewMamber(candidate : object){
+     //window.alert(candidate['name']); 
+    const index = this.crew.indexOf(candidate);
+    if(index > -1 ){
+          this.crew.splice(index, 1);
+
+     }else if(this.crew.length < 3 ){
+       this.crew.push(candidate);
+     }
+     if(this.crew.length == 3){
+       this.crewFull = "Full";
+     }else{
+      this.crewFull = "";
+     }
+      
+  }
+
 
 }
